@@ -1,4 +1,4 @@
-package castinator
+package main
 
 import (
 	"fmt"
