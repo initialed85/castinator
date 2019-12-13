@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"bootstrap_mk5/pkg/common"
 	"fmt"
+	"github.com/initialed85/castinator/pkg/common"
 	"log"
 	"net"
 )
