@@ -1,3 +1,3 @@
-module bootstrap_mk5
+module castinator
 
 go 1.12
