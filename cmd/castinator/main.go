@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bootstrap_mk5/pkg/handler"
-	"bootstrap_mk5/pkg/interfaces"
-	"bootstrap_mk5/pkg/listener"
-	"bootstrap_mk5/pkg/sender"
 	"fmt"
+	"github.com/initialed85/castinator/pkg/handler"
+	"github.com/initialed85/castinator/pkg/interfaces"
+	"github.com/initialed85/castinator/pkg/listener"
+	"github.com/initialed85/castinator/pkg/sender"
 	"log"
 	"os"
 	"sync"
