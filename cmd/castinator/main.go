@@ -12,6 +12,8 @@ import (
 )
 
 func main() {
+	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds | log.Lshortfile)
+
 	if len(os.Args) < 5 {
 		fmt.Println("usage: castinator [left interface] [left UDPv4/v6 address] [right interface] [right UDPv4/v6 address]")
 
@@ -48,19 +50,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("leftAddr = %+v\n", leftAddr)
-	fmt.Printf("leftIntfc = %+v\n", leftIntfc)
-	fmt.Printf("leftSrcAddr = %+v\n", leftSrcAddr)
-	fmt.Printf("leftListener = %+v\n", leftListener)
-	fmt.Printf("leftSender = %+v\n", leftSender)
+	log.Printf("leftAddr = %+v\n", leftAddr)
+	log.Printf("leftIntfc = %+v\n", leftIntfc)
+	log.Printf("leftSrcAddr = %+v\n", leftSrcAddr)
+	log.Printf("leftListener = %+v\n", leftListener)
+	log.Printf("leftSender = %+v\n", leftSender)
 
 	fmt.Println("")
 
-	fmt.Printf("rightAddr = %+v\n", rightAddr)
-	fmt.Printf("rightIntfc = %+v\n", rightIntfc)
-	fmt.Printf("rightSrcAddr = %+v\n", rightSrcAddr)
-	fmt.Printf("rightListener = %+v\n", rightListener)
-	fmt.Printf("rightSender = %+v\n", rightSender)
+	log.Printf("rightAddr = %+v\n", rightAddr)
+	log.Printf("rightIntfc = %+v\n", rightIntfc)
+	log.Printf("rightSrcAddr = %+v\n", rightSrcAddr)
+	log.Printf("rightListener = %+v\n", rightListener)
+	log.Printf("rightSender = %+v\n", rightSender)
 
 	wg := sync.WaitGroup{}
 
