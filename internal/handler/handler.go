@@ -2,9 +2,10 @@ package handler
 
 import (
 	"fmt"
-	"github.com/initialed85/castinator/pkg/common"
+	"github.com/initialed85/castinator/internal/common"
 	"log"
 	"net"
+	"time"
 )
 
 func Handle(listener, sender, otherSender *net.UDPConn) {
@@ -12,9 +13,11 @@ func Handle(listener, sender, otherSender *net.UDPConn) {
 		buf := make([]byte, common.MaxDatagramSize)
 		n, src, err := listener.ReadFromUDP(buf)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("failed to ReadFromUDP because %v", err))
+			log.Printf(fmt.Sprintf("failed to ReadFromUDP because %v", err))
 
-			return
+			time.Sleep(time.Millisecond * 100)
+
+			continue
 		}
 
 		log.Printf("%v -> %v - received %v bytes", src, listener.LocalAddr().String(), n)
@@ -33,11 +36,18 @@ func Handle(listener, sender, otherSender *net.UDPConn) {
 			continue
 		}
 
+		err = sender.SetWriteDeadline(time.Now().Add(time.Second))
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		_, err = sender.Write([]byte(data))
 		if err != nil {
-			log.Fatalf("failed to Write because %v", err)
+			log.Printf("failed to Write because %v", err)
 
-			return
+			time.Sleep(time.Millisecond * 100)
+
+			continue
 		}
 
 		log.Printf("%v -> %v - sent %v bytes to %v", src, listener.LocalAddr().String(), n, sender.RemoteAddr())

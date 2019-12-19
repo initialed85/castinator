@@ -2,15 +2,12 @@ package sender
 
 import (
 	"fmt"
+	"github.com/initialed85/castinator/internal/interfaces"
 	"net"
-	"strings"
 )
 
 func GetSender(addr *net.UDPAddr, srcAddr *net.UDPAddr) (conn *net.UDPConn, err error) {
-	network := "udp4"
-	if strings.Count(addr.String(), ":") > 1 {
-		network = "udp6"
-	}
+	network := interfaces.GetNetwork(addr.String())
 
 	conn, err = net.DialUDP(network, srcAddr, addr)
 	if err != nil {

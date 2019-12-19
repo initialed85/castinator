@@ -2,17 +2,14 @@ package listener
 
 import (
 	"fmt"
-	"github.com/initialed85/castinator/pkg/common"
+	"github.com/initialed85/castinator/internal/common"
+	"github.com/initialed85/castinator/internal/interfaces"
 	"net"
-	"strings"
 	"syscall"
 )
 
 func GetListener(addr *net.UDPAddr, intfc *net.Interface) (conn *net.UDPConn, err error) {
-	network := "udp4"
-	if strings.Count(addr.String(), ":") > 1 {
-		network = "udp6"
-	}
+	network := interfaces.GetNetwork(addr.String())
 
 	if addr.IP.IsMulticast() {
 		conn, err = net.ListenMulticastUDP(network, intfc, addr)
