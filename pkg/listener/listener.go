@@ -3,7 +3,7 @@ package listener
 import (
 	"fmt"
 	"github.com/initialed85/castinator/internal/common"
-	"github.com/initialed85/castinator/internal/interfaces"
+	"github.com/initialed85/castinator/pkg/interfaces"
 	"net"
 	"syscall"
 )

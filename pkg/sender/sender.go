@@ -2,7 +2,7 @@ package sender
 
 import (
 	"fmt"
-	"github.com/initialed85/castinator/internal/interfaces"
+	"github.com/initialed85/castinator/pkg/interfaces"
 	"net"
 )
 

@@ -3,9 +3,9 @@ package castinator
 import (
 	"fmt"
 	"github.com/initialed85/castinator/internal/handler"
-	"github.com/initialed85/castinator/internal/interfaces"
-	"github.com/initialed85/castinator/internal/listener"
-	"github.com/initialed85/castinator/internal/sender"
+	"github.com/initialed85/castinator/pkg/interfaces"
+	"github.com/initialed85/castinator/pkg/listener"
+	"github.com/initialed85/castinator/pkg/sender"
 	"log"
 	"net"
 	"os"
