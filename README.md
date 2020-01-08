@@ -5,4 +5,10 @@ Repeat a UDP unicast/multicast/broadcast to another UDP unicast/multicast/broadc
 
 IPv4 Multicast on `en0` to IPv6 link-local anycast on `en5`
 
-    ./castinator en0 239.255.137.1:6291 en5 [ff02::1%en0]:6291
+    ./castinator \
+      -leftIntfcName en0 \
+      -leftUDPListenAddr 239.192.137.1:6291 \
+      -leftUDPSendAddr 239.192.137.1:6291 \
+      -rightIntfcName en5 \
+      -rightUDPListenAddr [ff02::1%en0]:6291 \
+      -rightUDPSendAddr [ff02::1%en0]:6291
